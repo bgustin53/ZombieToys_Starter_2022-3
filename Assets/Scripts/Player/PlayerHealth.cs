@@ -86,8 +86,10 @@ public class PlayerHealth : MonoBehaviour
             GameManager.Instance.PlayerDied();
         }
         //If there is an audio source, tell it to play
-        if (audioSource != null) { }
+        if (audioSource != null)
+        {
             audioSource.Play();
+        }
     }
 
     public bool IsAlive()
