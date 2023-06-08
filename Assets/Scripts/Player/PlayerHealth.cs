@@ -97,13 +97,4 @@ public class PlayerHealth : MonoBehaviour
         //If the currentHealth is above 0 return true (the player is alive), otherwise return false
         return currentHealth > 0;
     }
-
-    //This method is called by an event in the Death animation on the player
-    void DeathComplete ()
-    {
-        //If this player is the registered player of the GameManager, tell the GameManager that this player
-        //has finished its death animation
-        if(GameManager.Instance.Player == this)
-            GameManager.Instance.PlayerDeathComplete();
-    }
 }
