@@ -11,14 +11,13 @@ public class PrototypeAttack : MonoBehaviour
     [SerializeField] int damage = 20; 				//How much damage the attack does
     [SerializeField] float range = 20.0f;			//How far the attack can shoot
     [SerializeField] LayerMask strikeableMask; 		//Layermask that determines what the attack can hit
-    //[SerializeField] bool debugRay;               //Enables Debug Line Draw is Gizmos in on in Game window.
-
 
     //Called from PlayerAttack script
     public void Fire()
     {
-        //Create a ray from the current position and extending straight forward
-        Ray ray = new Ray(transform.position, transform.forward);
+        //Create a ray from the camera to the mouse.
+        Vector3 mousePosition = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         //Create a RaycastHit variable which will store information about the raycast
         RaycastHit hit;
 
@@ -34,13 +33,6 @@ public class PrototypeAttack : MonoBehaviour
                 enemyHealth.TakeDamage(damage);
             }
         }
-
-        /* If debugRay is not commented out
-        if (debugRay)
-        {
-            Debug.DrawLine(transform.position, transform.position + transform.forward * range, Color.green, 7.0f);
-        }
-        */
     }
 }
     
